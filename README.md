@@ -8,8 +8,6 @@ bundler
 some sort of webserver  
 
 ## Installation
-Install:
-
     git clone https://github.com/hatt/greenroom.git
     cd greenroom
     bundler install
