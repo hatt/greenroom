@@ -5,6 +5,7 @@ gem 'mcollective'
 gem 'json'
 
 group :test, :development do
-  gem 'rack/test'
-  gem 'test/unit'
+  gem 'rake'
+  gem 'rack-test'
+  gem 'test-unit'
 end
