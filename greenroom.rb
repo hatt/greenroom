@@ -6,10 +6,20 @@ require 'json'
 
 include MCollective::RPC
 
-MCO_CONFIG = ENV['MCO_CONFIG'].defined? ? ENV['MCO_CONFIG'] : '/etc/mcollective/client.cfg'
+if !ENV['MCO_CONFIG'].nil?
+  if !ENV['MCO_CONFIG'].empty?
+    MCO_CONFIG = ENV['MCO_CONFIG']
+  end
+else
+  MCO_CONFIG = '/etc/mcollective/client.cfg'
+end
 
-post '/:agent/:action/*' do
-  client = rpcclient(params[:agent], :configfile  => MCO_CONFIG)
+get '/:agent/:action' do
+  client = rpcclient(params[:agent], :configfile  => MCO_CONFIG, :options => {
+    :progress_bar => false,
+    :verbose      => false,
+    :config       => MCO_CONFIG
+  })
   client.discover
 
   content = request.body.read
