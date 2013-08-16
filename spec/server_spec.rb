@@ -1,8 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'greenroom'
+require 'spec_helper'
 require 'rspec'
 require 'rack/test'
+require 'greenroom'
 require 'json'
 
 RSpec.configure do |conf|
