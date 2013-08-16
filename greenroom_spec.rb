@@ -13,7 +13,7 @@ class GreenroomTest < Test::Unit::TestCase
   end
 
   def test_it_pings
-    get '/rpcutil/ping'
+    post '/rpcutil/ping'
     ret = JSON.parse(last_response.body)
 
     assert last_response.ok?
@@ -21,7 +21,7 @@ class GreenroomTest < Test::Unit::TestCase
   end
 
   def test_it_gets_inventory
-    get '/rpcutil/inventory'
+    post '/rpcutil/inventory'
     ret = JSON.parse(last_response.body)
 
     assert last_response.ok?

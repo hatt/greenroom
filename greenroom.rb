@@ -14,7 +14,7 @@ else
   MCO_CONFIG = '/etc/mcollective/client.cfg'
 end
 
-get '/:agent/:action' do
+post '/:agent/:action' do
   client = rpcclient(params[:agent], :configfile  => MCO_CONFIG, :options => {
     :progress_bar => false,
     :verbose      => false,
