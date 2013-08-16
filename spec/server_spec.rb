@@ -9,7 +9,7 @@ RSpec.configure do |conf|
   conf.include Rack::Test::Methods
 end
 
-describe 'Greenroom App' do
+describe 'Greenroom Server' do
   def app
     Sinatra::Application
   end

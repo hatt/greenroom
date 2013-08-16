@@ -1,8 +1,5 @@
-require 'rake/testtask'
+require 'rspec/core/rake_task'
 
-task :default => [:test]
+task :default => [:spec]
 
-Rake::TestTask.new do |t|
-  t.libs << "./"
-  t.pattern = '*_spec.rb'
-end
+RSpec::Core::RakeTask.new(:spec)
