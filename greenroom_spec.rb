@@ -1,30 +1,32 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'greenroom'
-require 'test/unit'
+require 'rspec'
 require 'rack/test'
 require 'json'
 
-ENV['RACK_ENV'] = 'test'
+RSpec.configure do |conf|
+  conf.include Rack::Test::Methods
+end
 
-class GreenroomTest < Test::Unit::TestCase
-  include Rack::Test::Methods
-
+describe 'Greenroom App' do
   def app
     Sinatra::Application
   end
 
-  def test_it_pings
+  it "pings" do
     post '/rpcutil/ping'
     ret = JSON.parse(last_response.body)
 
-    assert last_response.ok?
-    assert_equal "OK", ret[0]["statusmsg"]
+    last_response.should be_ok
+    ret[0]["statusmsg"].should == 'OK'
   end
 
-  def test_it_gets_inventory
+  it "fetches inventory" do
     post '/rpcutil/inventory'
     ret = JSON.parse(last_response.body)
 
-    assert last_response.ok?
-    assert_equal "OK", ret[0]["statusmsg"]
+    last_response.should be_ok
+    ret[0]["statusmsg"].should == 'OK'
   end
 end

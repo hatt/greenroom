@@ -6,6 +6,6 @@ gem 'json'
 
 group :test, :development do
   gem 'rake'
+  gem 'rspec'
   gem 'rack-test'
-  gem 'test-unit'
 end
