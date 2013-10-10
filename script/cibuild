@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export RACK_ENV="test"
+
+bundle install --binstubs --path vendor/gems
+bundle exec rspec
